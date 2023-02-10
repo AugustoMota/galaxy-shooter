@@ -15,7 +15,11 @@ public class Tiro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+     
+            transform.Translate(speed * Vector3.up * Time.deltaTime);
+        
+       
 
-        transform.Translate(speed * Vector3.up * Time.deltaTime);
+
     }
 }
