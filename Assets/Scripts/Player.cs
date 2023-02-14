@@ -9,6 +9,12 @@ public class Player : MonoBehaviour
     public float speed = 1.0f;
     public GameObject tiro;
     public Transform offsetTiro;
+    private float nextFire = 0.0f;
+    public float fireRate = 0.25f;
+    public float intervaloRajada = 0f;
+    public int tirosPorRajada = 3;
+    public float ProximaRajada = 0f;
+    private int TotalTiros = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +28,8 @@ public class Player : MonoBehaviour
     {
         Movimentacao();
         LimiteDeTela();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-           Atirar();
-        }
+        Atirar();
+        
     }
 
     private void LimiteDeTela()
@@ -70,6 +73,22 @@ public class Player : MonoBehaviour
 
     private void Atirar()
     {
-        Instantiate(tiro,offsetTiro.position, Quaternion.identity);
+       
+            if (Input.GetKey(KeyCode.Space) && Time.time > nextFire && Time.time > ProximaRajada)
+            {
+                nextFire = Time.time + fireRate;
+                Instantiate(tiro, offsetTiro.position, Quaternion.identity);
+
+                TotalTiros = TotalTiros + 1; //totalTiros++
+
+                if (TotalTiros == tirosPorRajada)
+                {
+                    ProximaRajada = Time.time + intervaloRajada;
+                    TotalTiros = 0;
+                }
+            }
+           
+        
+       
     }
 }
