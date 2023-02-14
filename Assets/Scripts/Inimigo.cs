@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public float speed = 0.6f;
+   
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Posicaoinimigo();
+    }
+
+
+    private void Posicaoinimigo()
+    {
+
+        transform.Translate(speed * Vector3.down * Time.deltaTime);
+
+        var newposition = transform.position;
+        float randonmPoint = Random.value;
+
+        if (transform.position.y < -6.5f)
+        {
+
+            newposition.y = 10.5f;
+            newposition.x = Random.Range(-12f, 6f);
+            transform.position = newposition;
+        }
+
     }
 }
