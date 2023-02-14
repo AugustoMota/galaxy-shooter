@@ -7,6 +7,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 1.0f;
+    public GameObject tiro;
+    public Transform offsetTiro;
+    private float nextFire = 0.0f;
+    public float fireRate = 0.25f;
+    public float intervaloRajada = 0f;
+    public int tirosPorRajada = 3;
+    public float ProximaRajada = 0f;
+    private int TotalTiros = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,19 +26,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var moveX= Input.GetAxis("Horizontal");
-        var moveY= Input.GetAxis("Vertical"); 
-        transform.Translate(speed * Vector3.right * Time.deltaTime * moveX);
-        transform.Translate(speed * Vector3.up * Time.deltaTime * moveY);
+        Movimentacao();
+        LimiteDeTela();
+        Atirar();
+        
+    }
 
-        if( transform.position.x > 9.0f)
+    private void LimiteDeTela()
+    {
+        if (transform.position.x > 9.0f)
         {
             var newposition = transform.position;
             newposition.x = 9.0f;
             transform.position = newposition;
         }
 
-        if(transform.position.x < -9.0f)
+        if (transform.position.x < -9.0f)
         {
             var newposition = transform.position;
             newposition.x = -9.0f;
@@ -50,8 +61,34 @@ public class Player : MonoBehaviour
             newposition.y = -4.0f;
             transform.position = newposition;
         }
+    }
 
+    private void Movimentacao()
+    {
+        var moveX = Input.GetAxis("Horizontal");
+        var moveY = Input.GetAxis("Vertical");
+        transform.Translate(speed * Vector3.right * Time.deltaTime * moveX);
+        transform.Translate(speed * Vector3.up * Time.deltaTime * moveY);
+    }
 
+    private void Atirar()
+    {
+       
+            if (Input.GetKey(KeyCode.Space) && Time.time > nextFire && Time.time > ProximaRajada)
+            {
+                nextFire = Time.time + fireRate;
+                Instantiate(tiro, offsetTiro.position, Quaternion.identity);
 
+                TotalTiros = TotalTiros + 1; //totalTiros++
+
+                if (TotalTiros == tirosPorRajada)
+                {
+                    ProximaRajada = Time.time + intervaloRajada;
+                    TotalTiros = 0;
+                }
+            }
+           
+        
+       
     }
 }

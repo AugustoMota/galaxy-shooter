@@ -121,25 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &869355263 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1893889794624042076, guid: e2c125e8854d11f4a95f4f70fdbb7080,
-    type: 3}
-  m_PrefabInstance: {fileID: 1408642343}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &869355264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869355263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d52b1378e577a3343aa084487318d424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!1001 &1408642343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 907825391076026343, guid: e2c125e8854d11f4a95f4f70fdbb7080,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb24d9fe133473d4ca6304750a62feb8, type: 2}
     - target: {fileID: 1430810292504135184, guid: e2c125e8854d11f4a95f4f70fdbb7080,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -206,6 +192,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023426464719467916, guid: e2c125e8854d11f4a95f4f70fdbb7080,
+        type: 3}
+      propertyPath: tiro
+      value: 
+      objectReference: {fileID: 3551263338785442868, guid: 56ce9818ae812de43931111655079c74,
+        type: 3}
+    - target: {fileID: 3023426464719467916, guid: e2c125e8854d11f4a95f4f70fdbb7080,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023426464719467916, guid: e2c125e8854d11f4a95f4f70fdbb7080,
+        type: 3}
+      propertyPath: ProximaRajada
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023426464719467916, guid: e2c125e8854d11f4a95f4f70fdbb7080,
+        type: 3}
+      propertyPath: TirosPorRajada
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023426464719467916, guid: e2c125e8854d11f4a95f4f70fdbb7080,
+        type: 3}
+      propertyPath: intervaloRajada
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301956843159688491, guid: e2c125e8854d11f4a95f4f70fdbb7080,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.393
       objectReference: {fileID: 0}
     - target: {fileID: 8997223912928018608, guid: e2c125e8854d11f4a95f4f70fdbb7080,
         type: 3}
@@ -292,7 +309,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.8490566, g: 0.38996252, b: 0.15619439, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -350,7 +367,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793041144}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0.02, y: 3, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -391,7 +408,7 @@ Camera:
   m_GameObject: {fileID: 1835238253}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
